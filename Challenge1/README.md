@@ -17,19 +17,6 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 4. Second virtual machine -> entertain traffic from first virtual machine only and can reply the same virtual machine again.
 5. App can connect to database and database can connect to app but database cannot connect to web.
 
-_Note: Keep main and variable files different for each component_
-
-## Solution
-
-### The Terraform resources will consists of following structure
-
-```
-├── main.tf                   // The primary entrypoint for terraform resources.
-├── vars.tf                   // It contain the declarations for variables.
-├── output.tf                 // It contain the declarations for outputs.
-├── terraform.tfvars          // The file to pass the terraform variables values.
-```
-
 ### Module
 
 A module is a container for multiple resources that are used together. Modules can be used to create lightweight abstractions, so that you can describe your infrastructure in terms of its architecture, rather than directly in terms of physical objects.
@@ -68,3 +55,8 @@ validates the configuration files in a directory, referring only to the configur
 **Step 3** `terraform apply`
 
 used to apply the changes required to reach the desired state of the configuration
+
+## Screnshots of the Plan
+
+![IMG_5172](https://github.com/shubhjain51/Subhanshu-Jain-KPMG-Challenge/assets/93961647/19cbcd26-ffca-4a19-8cec-b05e52573cf9)
+
