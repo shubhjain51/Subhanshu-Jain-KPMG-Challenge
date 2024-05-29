@@ -10,7 +10,7 @@
 
 def getKey(obj: dict):
     keys = list(obj)
-    print(keys)
+    # print(keys)
     if len(keys) != 1:
         raise Exception('either multiple keys or empty dict found')
     else:
