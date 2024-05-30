@@ -1,37 +1,24 @@
-# We have a nested object, we would like a function that you pass in the object and a key and get back the value. How this is implemented is up to you.
-##
-# Example Inputs
-# object = {“a”:{“b”:{“c”:”d”}}}
-# key = a/b/c
-##
-# object = {“x”:{“y”:{“z”:”a”}}}
-# key = x/y/z
-# value = a
-
-def getKey(obj: dict):
-    keys = list(obj)
-    # print(keys)
+def get_Key(nested_obj: dict):
+    keys = list(nested_obj)
     if len(keys) != 1:
-        raise Exception('either multiple keys or empty dict found')
+        raise Exception('Either there are multiple keys or the empty dictionary been found')
     else:
         return keys[0]
 
 
-def getNestedValue(obj: dict, key: str, isFound = False):
-    # print(obj, key, isFound)
-    if type(obj) is not dict and not isFound:
+def get_Value(nested_obj: dict, key: str, isFound = False):
+    if type(nested_obj) is not dict and not isFound:
         return None
-    if (isFound or (key in obj.keys())) :
-        if type(obj[key]) is dict:
-            return getNestedValue(obj[key], getKey(obj[key]), True)
+    if (isFound or (key in nested_obj.keys())) :
+        if type(nested_obj[key]) is dict:
+            return get_Value(nested_obj[key], get_Key(nested_obj[key]), True)
         else:
-            # print(f'obj[getKey(obj)]: {obj[getKey(obj)]}')
-            return obj[getKey(obj)]
+            return nested_obj[get_Key(nested_obj)]
     else:
-        nestedKey = getKey(obj)
-        return getNestedValue(obj[nestedKey], key, False)
+        nestedKey = get_Key(nested_obj)
+        return get_Value(nested_obj[nestedKey], key, False)
 
 if __name__ == '__main__':
-    obj = {'a': {'b': {'c': 'd'}}}
-    value = getNestedValue(obj, 'b')
-    print(value)
+    nested_obj = {'a': {'b': {'c': 'd'}}}
+    nested_value = get_Value(nested_obj, 'b')
+    print(nested_value)
